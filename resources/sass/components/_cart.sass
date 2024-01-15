@@ -1,0 +1,62 @@
+@import '../utils/_variables'
+
+
+.cartTitle
+    margin-bottom: 30px
+
+.cartTable
+    width: 100%
+    &__head
+        border-bottom: 1px dashed black
+    &__body
+        &__line
+            padding: 15px 0
+            border-bottom: 1px solid black
+            height: 70px
+            &--total
+                padding: 25px 0
+                height: 50px
+                background-color: $color4
+            &__productName
+                display: flex 
+                flex-direction: row
+                justify-content: start
+                align-items: center
+                gap: 15px
+                & img
+                    height: 60px
+            &__subTotal
+                display: flex
+                flex-direction: column
+                justify-content: center
+                // align-items: center
+            &:hover
+                background-color: $color5
+
+.cartHoldPrice
+    color: red
+
+.deleteProductButton
+    height: 20px
+    width: 20px
+
+.recommendations
+    &__title
+        margin-bottom: 40px
+    &__products
+        display: flex 
+        flex-direction: row
+        justify-content: space-around
+
+.orderForm
+    width: 100%
+    margin-top: 50px
+    & button
+        background-color: $color2
+        border-radius: 2px
+        color: $color5
+        width: 100%
+        &:hover
+            border: 1px dashed $color1
+            background-color: $color5
+            color: $color1

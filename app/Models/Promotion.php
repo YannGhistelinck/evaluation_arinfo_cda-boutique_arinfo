@@ -9,6 +9,15 @@ class Promotion extends Model
 {
     use HasFactory;
 
+    protected $fillable=[
+        'promotionName',
+        'promotionValue', 
+        'startAt',
+        'endAt',
+        'promotion_type_id'
+    ];
+
+
     public function promotionType(){
         return $this->belongsTo(PromotionType::class);
     }

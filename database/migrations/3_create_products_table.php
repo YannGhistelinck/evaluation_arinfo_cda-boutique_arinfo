@@ -13,16 +13,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->boolean('productStatus')->default(0);
             $table->string('productName');
+            $table->text('productDescription');
             $table->float('price');
             $table->integer('stock');
             $table->timestamps();
 
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('subcategory_id')->constrained();
-            $table->foreignId('promotion_id')->constrained();
+            $table->foreignId('category_id')->nullable()->default(null)->constrained();
+            $table->foreignId('sub_category_id')->nullable()->default(null)->constrained();
+            $table->foreignId('promotion_id')->nullable()->constrained();
             $table->foreignId('size_id')->constrained()->default(1);
-            $table->foreignId('collection_id')->constrained()->default(1);
+            $table->foreignId('collection_id')->nullable()->constrained();
         });
     }
 

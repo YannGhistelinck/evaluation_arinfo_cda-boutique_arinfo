@@ -1,23 +1,91 @@
 @extends('layouts.app')
 
+
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    @include('components.menu')
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <div class="shopContainer">
+        {{-- <aside class="shopContainer__filters">
+            <h2>Filtrer</h2>
+        </aside> --}}
 
-                    {{ __('You are logged in!') }}
+
+
+
+        <div class="shopContainer__products">
+
+            
+            <div id='product0'>
+                <div class="shopContainer__products__items">
+                    @foreach($products->sortByDesc('stock') as $product)
+                        <a href="{{route('products.show', $product)}}">
+                            <div>
+                                @include('components.shopArticle', array('product'=>$product, 'admin'=>0, 'sizes'=>$sizes, 'products'=> $products, 'images' => $images))
+                            </div>
+                        </a>
+                        
+                    @endforeach
                 </div>
+
             </div>
+            
+            @foreach($categories as $category)
+                <div id="product{{$category->id}}" class="hidden">
+                    <div class="shopContainer__products__items">
+                        @foreach($products->sortByDesc('stock')->where('category_id', $category->id) as $product)
+                            <a href="{{route('products.show', $product)}}">
+                                <div>
+                                    @include('components.shopArticle', array('product'=>$product, 'admin'=>0, 'sizes'=>$sizes, 'products'=> $products, 'images' => $images))
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
+            @endforeach
+            @php
+                $productsWithValidPromotion = $products->filter(function ($product) {
+                    return $product->promotion_id !== null && $product->promotion->startAt <= now()->format('Y-m-d') && $product->promotion->endAt >= now()->format('Y-m-d');
+                });
+            @endphp
+            <div id='productPromo' class="hidden">
+                <div class="shopContainer__products__items">
+                    @foreach($productsWithValidPromotion as $product)
+                        <a href="{{route('products.show', $product)}}">
+                            <div>
+                                @include('components.shopArticle', array('product'=>$product, 'admin'=>0, 'sizes'=>$sizes, 'products'=> $products, 'images' => $images))
+                            </div>
+                        </a>
+                        
+                    @endforeach
+                </div>
+
+            </div>
+
         </div>
+
+
+
+
+        {{-- <aside class="shopContainer__cart">
+            <h2>Panier</h2>
+        </aside> --}}
+
+
     </div>
-</div>
+
+    
+
+    <script>
+        let previousDisplay = 'product0'
+        function display(id){
+            document.getElementById(previousDisplay).classList.toggle('hidden')
+            document.getElementById(id).classList.toggle('hidden')
+            previousDisplay = id
+        }
+
+        
+
+    </script>
 @endsection

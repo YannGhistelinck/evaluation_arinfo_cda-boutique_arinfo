@@ -1,0 +1,46 @@
+@import '../utils/_variables'
+
+.inProgressOrders
+    margin-bottom: 30px
+    &__order
+        margin-bottom: 20px
+
+.parameters
+    width: 100%
+    border-bottom: 2px dashed $color1
+    margin-bottom: 40px
+    padding-bottom: 20px
+    &__title
+        text-align: center
+
+.parameterContainer
+    display: flex
+    flex-direction: row
+    gap: 10px
+    
+    
+    &__menu
+        width: 20%
+        display: flex
+        flex-direction: column
+        & div
+            border-top: 1px solid black
+            padding: 20px
+            margin: 0 15px
+            text-align: center
+        & div:hover
+            cursor: pointer
+            background-color: $color3
+    &__content
+        width:100%
+        & h4
+            text-align: center
+            border-top: 1px solid $color1
+            margin-top: 15px
+
+
+.adminProductContainer
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    gap: 10px

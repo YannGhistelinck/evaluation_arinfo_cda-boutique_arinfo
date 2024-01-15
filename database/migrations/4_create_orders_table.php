@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('order_status_id')->constrained()->default(1);
-            $table->foreignId('products_id')->constrained();
+            $table->foreignId('products_id')->nullable()->constrained();
         });
     }
 

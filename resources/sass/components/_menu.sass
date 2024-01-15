@@ -1,0 +1,24 @@
+@import '../utils/_variables'
+
+
+.menu
+    height: fit-content
+    &__mainMenu
+        display: flex 
+        flex-direction: row 
+        justify-content: space-around
+        align-items: center
+        flex-wrap: wrap 
+        gap: 10px
+        border-bottom: 1px solid black
+        margin: auto 0
+        &__item
+            padding: 20px 20px 
+            margin: 0
+            color: $color1
+            height: 100%
+            &:hover
+                cursor: pointer
+
+.selected
+    text-decoration: underline

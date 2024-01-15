@@ -1,0 +1,51 @@
+@import '../utils/_variables'
+
+
+.adminProduct
+    width: 250px
+    border: 1px solid black
+    display: flex 
+    flex-direction: column 
+    align-items: center
+    padding: 5px
+    border-radius: 5px
+    &--draft
+        opacity: 0.6
+    // & button
+    //     background-color: $color2
+    //     border-radius: 2px
+    //     color: $color5
+    //     width: 100%
+    //     &:hover
+    //         border: 1px dashed $color1
+    //         background-color: $color5
+    //         color: $color1
+    &__details
+        display: flex 
+        flex-direction: row
+        justify-content: space-around
+        gap: 5px
+        & p
+            border: 1px solid $color1
+            padding: 4px
+    &__images
+        margin-bottom: 30px
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        gap: 5px
+        &__image
+            height: 75px
+            width: 75px
+            &__delete
+                width: 25%
+                height: 25%
+                margin-top: -10px
+            &__img
+                width: 100%
+                height: 100%
+                object-fit: cover
+            &:hover
+                height: 85px
+                width: 85px
+                margin: -5px

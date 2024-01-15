@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             PromotionTypeSeeder::class,
             RoleSeeder::class,
             SizeSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            CategorySeeder::class
         ]);
     }
 }
